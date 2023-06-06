@@ -24,14 +24,13 @@ public class BrowserDownloader
             "https://playwright.azureedge.net/",
             "https://playwright-akamai.azureedge.net/",
             "https://playwright-verizon.azureedge.net/"
-        }.OrderBy(x => Guid.NewGuid()).ToList();
+        };
     }
 
     public async Task DownloadBrowserAsync(IProgress<double> progressCallback, string browser, string platform, string browsersFile = null, string version = null, string downloadPath = null)
     {
         try
         {
-            _cdns = _cdns.OrderBy(x => Guid.NewGuid()).ToList();
             if(string.IsNullOrEmpty(version))
             {
                 version = GetVersion(browser, browsersFile);
