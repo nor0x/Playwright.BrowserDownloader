@@ -27,10 +27,11 @@
     <Authors>Joachim Leonfellner</Authors>
     <Copyright>Copyright 2023 nor0x</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
   </PropertyGroup>
-
-
+  <ItemGroup>
+    <None Include="packageicon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="7.0.2" />
   </ItemGroup>

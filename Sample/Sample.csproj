@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\nor0x.Playwright.BrowserDownloader\nor0x.Playwright.BrowserDownloader.csproj" />
+    <ProjectReference Include="..\Playwright.BrowserDownloader\Playwright.BrowserDownloader.csproj" />
   </ItemGroup>
 
 </Project>
