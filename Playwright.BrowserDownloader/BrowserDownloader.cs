@@ -34,7 +34,7 @@ public class BrowserDownloader
             _cdns = _cdns.OrderBy(x => Guid.NewGuid()).ToList();
             if(string.IsNullOrEmpty(version))
             {
-                version = GetVersion(browsersFile);
+                version = GetVersion(browser, browsersFile);
                 if(string.IsNullOrEmpty(version))
                 {
                     throw new Exception("Version not found");
