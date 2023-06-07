@@ -1,6 +1,6 @@
 # Playwright.BrowserDownloader
 
-<img src="https://raw.githubusercontent.com/nor0x/Playwright.BrowserDownloader/main/Art/packageicon.png" width="320px" />
+<img src="https://raw.githubusercontent.com/nor0x/Playwright.BrowserDownloader/main/art/packageicon.png" width="320px" />
 
 a small and simple helper library to manually download browsers for playwright usage.
 
