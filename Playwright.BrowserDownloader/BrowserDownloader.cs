@@ -100,7 +100,28 @@ public class BrowserDownloader
                             }
                         }
                     }
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    {
+                        var unzip = new ProcessStartInfo
+                        {
+                            FileName = "unzip",
+                            Arguments = $"-o {tempPath} -d {downloadPath}",
+                            RedirectStandardOutput = true,
+                            RedirectStandardError = true,
+                            UseShellExecute = false,
+                            CreateNoWindow = true,
+                        };
+                        var process = Process.Start(unzip);
+                        process.StandardOutput.ReadToEnd();
+                        process.StandardOutput.Close();
+                        process.StandardError.ReadToEnd();
+                        process.StandardError.Close();
+                        process.WaitForExit();
+                    }
+                    else
+                    {
                     ZipFile.ExtractToDirectory(tempPath, downloadPath);
+                    }
                     File.Delete(tempPath);
                     File.Create(Path.Combine(downloadPath, "INSTALLATION_COMPLETE"));
                 }
