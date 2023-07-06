@@ -24,4 +24,7 @@ void progressCallback(double p)
 }
 ```
 
+# more info
+https://johnnys.news/2023/07/nor0x-Playwright-BrowserDownloader
+
 happy coding and mtfbwya ✨
