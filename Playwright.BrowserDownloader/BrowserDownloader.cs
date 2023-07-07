@@ -85,7 +85,6 @@ public class BrowserDownloader
                     byte[] buffer = new byte[8192];
                     int bytesRead;
                     long downloadedBytes = 0;
-
                     using (FileStream fileStream = File.Create(tempPath))
                     {
                         while ((bytesRead = await contentStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
@@ -96,7 +95,10 @@ public class BrowserDownloader
                             if (totalBytes.HasValue)
                             {
                                 double progressPercentage = (double)(downloadedBytes * 100) / totalBytes.Value;
-                                progressCallback.Report(progressPercentage);
+                                if(progressPercentage != 100)
+                                {
+                                    progressCallback.Report(progressPercentage);
+                                }
                             }
                         }
                     }
@@ -124,6 +126,7 @@ public class BrowserDownloader
                     }
                     File.Delete(tempPath);
                     File.Create(Path.Combine(downloadPath, "INSTALLATION_COMPLETE"));
+                    progressCallback.Report(100);
                 }
             }
 
