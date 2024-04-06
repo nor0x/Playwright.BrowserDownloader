@@ -9,577 +9,225 @@ public static class Constants
       "chromium",
       new Dictionary < string,
       string > {
-        {
-          "<unknown>",
-          null
-        },
-        {
-          "generic-linux",
-          "builds/chromium/{0}/chromium-linux.zip"
-        },
-        {
-          "generic-linux-arm64",
-          "builds/chromium/{0}/chromium-linux-arm64.zip"
-        },
-        {
-          "ubuntu18.04",
-          "builds/chromium/{0}/chromium-linux.zip"
-        },
-        {
-          "ubuntu20.04",
-          "builds/chromium/{0}/chromium-linux.zip"
-        },
-        {
-          "ubuntu22.04",
-          "builds/chromium/{0}/chromium-linux.zip"
-        },
-        {
-          "ubuntu18.04-arm64",
-          "builds/chromium/{0}/chromium-linux-arm64.zip"
-        },
-        {
-          "ubuntu20.04-arm64",
-          "builds/chromium/{0}/chromium-linux-arm64.zip"
-        },
-        {
-          "ubuntu22.04-arm64",
-          "builds/chromium/{0}/chromium-linux-arm64.zip"
-        },
-        {
-          "debian11",
-          "builds/chromium/{0}/chromium-linux.zip"
-        },
-        {
-          "debian11-arm64",
-          "builds/chromium/{0}/chromium-linux-arm64.zip"
-        },
-        {
-          "mac10.13",
-          "builds/chromium/{0}/chromium-mac.zip"
-        },
-        {
-          "mac10.14",
-          "builds/chromium/{0}/chromium-mac.zip"
-        },
-        {
-          "mac10.15",
-          "builds/chromium/{0}/chromium-mac.zip"
-        },
-        {
-          "mac11",
-          "builds/chromium/{0}/chromium-mac.zip"
-        },
-        {
-          "mac11-arm64",
-          "builds/chromium/{0}/chromium-mac-arm64.zip"
-        },
-        {
-          "mac12",
-          "builds/chromium/{0}/chromium-mac.zip"
-        },
-        {
-          "mac12-arm64",
-          "builds/chromium/{0}/chromium-mac-arm64.zip"
-        },
-        {
-          "win64",
-          "builds/chromium/{0}/chromium-win64.zip"
-        }
+        ["<unknown>"] = null,
+        ["ubuntu18.04-x64"] = null,
+        ["ubuntu20.04-x64"] = "builds/chromium/%s/chromium-linux.zip",
+        ["ubuntu22.04-x64"] = "builds/chromium/%s/chromium-linux.zip",
+        ["ubuntu18.04-arm64"] = null,
+        ["ubuntu20.04-arm64"] = "builds/chromium/%s/chromium-linux-arm64.zip",
+        ["ubuntu22.04-arm64"] = "builds/chromium/%s/chromium-linux-arm64.zip",
+        ["debian11-x64"] = "builds/chromium/%s/chromium-linux.zip",
+        ["debian11-arm64"] = "builds/chromium/%s/chromium-linux-arm64.zip",
+        ["debian12-x64"] = "builds/chromium/%s/chromium-linux.zip",
+        ["debian12-arm64"] = "builds/chromium/%s/chromium-linux-arm64.zip",
+        ["mac10.13"] = "builds/chromium/%s/chromium-mac.zip",
+        ["mac10.14"] = "builds/chromium/%s/chromium-mac.zip",
+        ["mac10.15"] = "builds/chromium/%s/chromium-mac.zip",
+        ["mac11"] = "builds/chromium/%s/chromium-mac.zip",
+        ["mac11-arm64"] = "builds/chromium/%s/chromium-mac-arm64.zip",
+        ["mac12"] = "builds/chromium/%s/chromium-mac.zip",
+        ["mac12-arm64"] = "builds/chromium/%s/chromium-mac-arm64.zip",
+        ["mac13"] = "builds/chromium/%s/chromium-mac.zip",
+        ["mac13-arm64"] = "builds/chromium/%s/chromium-mac-arm64.zip",
+        ["mac14"] = "builds/chromium/%s/chromium-mac.zip",
+        ["mac14-arm64"] = "builds/chromium/%s/chromium-mac-arm64.zip",
+        ["win64"] = "builds/chromium/%s/chromium-win64.zip",
       }
     }, {
       "chromium-tip-of-tree",
       new Dictionary < string,
       string > {
-        {
-          "<unknown>",
-          null
-        },
-        {
-          "generic-linux",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-linux.zip"
-        },
-        {
-          "generic-linux-arm64",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-linux-arm64.zip"
-        },
-        {
-          "ubuntu18.04",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-linux.zip"
-        },
-        {
-          "ubuntu20.04",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-linux.zip"
-        },
-        {
-          "ubuntu22.04",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-linux.zip"
-        },
-        {
-          "ubuntu18.04-arm64",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-linux-arm64.zip"
-        },
-        {
-          "ubuntu20.04-arm64",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-linux-arm64.zip"
-        },
-        {
-          "ubuntu22.04-arm64",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-linux-arm64.zip"
-        },
-        {
-          "debian11",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-linux.zip"
-        },
-        {
-          "debian11-arm64",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-linux-arm64.zip"
-        },
-        {
-          "mac10.13",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac.zip"
-        },
-        {
-          "mac10.14",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac.zip"
-        },
-        {
-          "mac10.15",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac.zip"
-        },
-        {
-          "mac11",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac.zip"
-        },
-        {
-          "mac11-arm64",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac-arm64.zip"
-        },
-        {
-          "mac12",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac.zip"
-        },
-        {
-          "mac12-arm64",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac-arm64.zip"
-        },
-        {
-          "win64",
-          "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-win64.zip"
-        }
-      }
-    }, {
-      "chromium-chromium-with-symbols",
-      new Dictionary < string,
-      string > {
-        {
-          "<unknown>",
-          null
-        },
-        {
-          "generic-linux",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-linux.zip"
-        },
-        {
-          "generic-linux-arm64",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-linux-arm64.zip"
-        },
-        {
-          "ubuntu18.04",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-linux.zip"
-        },
-        {
-          "ubuntu20.04",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-linux.zip"
-        },
-        {
-          "ubuntu22.04",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-linux.zip"
-        },
-        {
-          "ubuntu18.04-arm64",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-linux-arm64.zip"
-        },
-        {
-          "ubuntu20.04-arm64",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-linux-arm64.zip"
-        },
-        {
-          "ubuntu22.04-arm64",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-linux-arm64.zip"
-        },
-        {
-          "debian11",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-linux.zip"
-        },
-        {
-          "debian11-arm64",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-linux-arm64.zip"
-        },
-        {
-          "mac10.13",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-mac.zip"
-        },
-        {
-          "mac10.14",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-mac.zip"
-        },
-        {
-          "mac10.15",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-mac.zip"
-        },
-        {
-          "mac11",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-mac.zip"
-        },
-        {
-          "mac11-arm64",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-mac-arm64.zip"
-        },
-        {
-          "mac12",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-mac.zip"
-        },
-        {
-          "mac12-arm64",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-mac-arm64.zip"
-        },
-        {
-          "win64",
-          "builds/chromium-chromium-with-symbols/{0}/chromium-chromium-with-symbols-win64.zip"
-        }
+        ["<unknown>"] = null,
+        ["ubuntu18.04-x64"] = null,
+        ["ubuntu20.04-x64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-linux.zip",
+        ["ubuntu22.04-x64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-linux.zip",
+        ["ubuntu18.04-arm64"] = null,
+        ["ubuntu20.04-arm64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-linux-arm64.zip",
+        ["ubuntu22.04-arm64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-linux-arm64.zip",
+        ["debian11-x64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-linux.zip",
+        ["debian11-arm64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-linux-arm64.zip",
+        ["debian12-x64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-linux.zip",
+        ["debian12-arm64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-linux-arm64.zip",
+        ["mac10.13"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-mac.zip",
+        ["mac10.14"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-mac.zip",
+        ["mac10.15"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-mac.zip",
+        ["mac11"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-mac.zip",
+        ["mac11-arm64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-mac-arm64.zip",
+        ["mac12"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-mac.zip",
+        ["mac12-arm64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-mac-arm64.zip",
+        ["mac13"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-mac.zip",
+        ["mac13-arm64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-mac-arm64.zip",
+        ["mac14"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-mac.zip",
+        ["mac14-arm64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-mac-arm64.zip",
+        ["win64"] = "builds/chromium-tip-of-tree/%s/chromium-tip-of-tree-win64.zip",
       }
     }, {
       "firefox",
       new Dictionary < string,
       string > {
-        {
-          "<unknown>",
-          null
-        },
-        {
-          "generic-linux",
-          "builds/firefox/{0}/firefox-ubuntu-20.04.zip"
-        },
-        {
-          "generic-linux-arm64",
-          "builds/firefox/{0}/firefox-ubuntu-20.04-arm64.zip"
-        },
-        {
-          "ubuntu18.04",
-          "builds/firefox/{0}/firefox-ubuntu-18.04.zip"
-        },
-        {
-          "ubuntu20.04",
-          "builds/firefox/{0}/firefox-ubuntu-20.04.zip"
-        },
-        {
-          "ubuntu22.04",
-          "builds/firefox/{0}/firefox-ubuntu-22.04.zip"
-        },
-        {
-          "ubuntu18.04-arm64",
-          null
-        },
-        {
-          "ubuntu20.04-arm64",
-          "builds/firefox/{0}/firefox-ubuntu-20.04-arm64.zip"
-        },
-        {
-          "ubuntu22.04-arm64",
-          "builds/firefox/{0}/firefox-ubuntu-22.04-arm64.zip"
-        },
-        {
-          "debian11",
-          "builds/firefox/{0}/firefox-debian-11.zip"
-        },
-        {
-          "debian11-arm64",
-          "builds/firefox/{0}/firefox-debian-11-arm64.zip"
-        },
-        {
-          "mac10.13",
-          "builds/firefox/{0}/firefox-mac-11.zip"
-        },
-        {
-          "mac10.14",
-          "builds/firefox/{0}/firefox-mac-11.zip"
-        },
-        {
-          "mac10.15",
-          "builds/firefox/{0}/firefox-mac-11.zip"
-        },
-        {
-          "mac11",
-          "builds/firefox/{0}/firefox-mac-11.zip"
-        },
-        {
-          "mac11-arm64",
-          "builds/firefox/{0}/firefox-mac-11-arm64.zip"
-        },
-        {
-          "mac12",
-          "builds/firefox/{0}/firefox-mac-11.zip"
-        },
-        {
-          "mac12-arm64",
-          "builds/firefox/{0}/firefox-mac-11-arm64.zip"
-        },
-        {
-          "win64",
-          "builds/firefox/{0}/firefox-win64.zip"
-        }
+        ["<unknown>"] = null,
+        ["ubuntu18.04-x64"] = null,
+        ["ubuntu20.04-x64"] = "builds/firefox/%s/firefox-ubuntu-20.04.zip",
+        ["ubuntu22.04-x64"] = "builds/firefox/%s/firefox-ubuntu-22.04.zip",
+        ["ubuntu18.04-arm64"] = null,
+        ["ubuntu20.04-arm64"] = "builds/firefox/%s/firefox-ubuntu-20.04-arm64.zip",
+        ["ubuntu22.04-arm64"] = "builds/firefox/%s/firefox-ubuntu-22.04-arm64.zip",
+        ["debian11-x64"] = "builds/firefox/%s/firefox-debian-11.zip",
+        ["debian11-arm64"] = "builds/firefox/%s/firefox-debian-11-arm64.zip",
+        ["debian12-x64"] = "builds/firefox/%s/firefox-debian-12.zip",
+        ["debian12-arm64"] = "builds/firefox/%s/firefox-debian-12-arm64.zip",
+        ["mac10.13"] = "builds/firefox/%s/firefox-mac-13.zip",
+        ["mac10.14"] = "builds/firefox/%s/firefox-mac-13.zip",
+        ["mac10.15"] = "builds/firefox/%s/firefox-mac-13.zip",
+        ["mac11"] = "builds/firefox/%s/firefox-mac-13.zip",
+        ["mac11-arm64"] = "builds/firefox/%s/firefox-mac-13-arm64.zip",
+        ["mac12"] = "builds/firefox/%s/firefox-mac-13.zip",
+        ["mac12-arm64"] = "builds/firefox/%s/firefox-mac-13-arm64.zip",
+        ["mac13"] = "builds/firefox/%s/firefox-mac-13.zip",
+        ["mac13-arm64"] = "builds/firefox/%s/firefox-mac-13-arm64.zip",
+        ["mac14"] = "builds/firefox/%s/firefox-mac-13.zip",
+        ["mac14-arm64"] = "builds/firefox/%s/firefox-mac-13-arm64.zip",
+        ["win64"] = "builds/firefox/%s/firefox-win64.zip",
       }
     }, {
       "firefox-beta",
       new Dictionary < string,
       string > {
-        {
-          "<unknown>",
-          null
-        },
-        {
-          "generic-linux",
-          "builds/firefox-beta/{0}/firefox-beta-ubuntu-20.04.zip"
-        },
-        {
-          "generic-linux-arm64",
-          "builds/firefox-beta/{0}/firefox-beta-ubuntu-20.04-arm64.zip"
-        },
-        {
-          "ubuntu18.04",
-          "builds/firefox-beta/{0}/firefox-beta-ubuntu-18.04.zip"
-        },
-        {
-          "ubuntu20.04",
-          "builds/firefox-beta/{0}/firefox-beta-ubuntu-20.04.zip"
-        },
-        {
-          "ubuntu22.04",
-          "builds/firefox-beta/{0}/firefox-beta-ubuntu-22.04.zip"
-        },
-        {
-          "ubuntu18.04-arm64",
-          null
-        },
-        {
-          "ubuntu20.04-arm64",
-          "builds/firefox-beta/{0}/firefox-beta-ubuntu-20.04-arm64.zip"
-        },
-        {
-          "ubuntu22.04-arm64",
-          "builds/firefox-beta/{0}/firefox-beta-ubuntu-22.04-arm64.zip"
-        },
-        {
-          "debian11",
-          "builds/firefox-beta/{0}/firefox-beta-debian-11.zip"
-        },
-        {
-          "debian11-arm64",
-          "builds/firefox-beta/{0}/firefox-beta-debian-11-arm64.zip"
-        },
-        {
-          "mac10.13",
-          "builds/firefox-beta/{0}/firefox-beta-mac-11.zip"
-        },
-        {
-          "mac10.14",
-          "builds/firefox-beta/{0}/firefox-beta-mac-11.zip"
-        },
-        {
-          "mac10.15",
-          "builds/firefox-beta/{0}/firefox-beta-mac-11.zip"
-        },
-        {
-          "mac11",
-          "builds/firefox-beta/{0}/firefox-beta-mac-11.zip"
-        },
-        {
-          "mac11-arm64",
-          "builds/firefox-beta/{0}/firefox-beta-mac-11-arm64.zip"
-        },
-        {
-          "mac12",
-          "builds/firefox-beta/{0}/firefox-beta-mac-11.zip"
-        },
-        {
-          "mac12-arm64",
-          "builds/firefox-beta/{0}/firefox-beta-mac-11-arm64.zip"
-        },
-        {
-          "win64",
-          "builds/firefox-beta/{0}/firefox-beta-win64.zip"
-        }
+        ["<unknown>"] = null,
+        ["ubuntu18.04-x64"] = null,
+        ["ubuntu20.04-x64"] = "builds/firefox-beta/%s/firefox-beta-ubuntu-20.04.zip",
+        ["ubuntu22.04-x64"] = "builds/firefox-beta/%s/firefox-beta-ubuntu-22.04.zip",
+        ["ubuntu18.04-arm64"] = null,
+        ["ubuntu20.04-arm64"] = null,
+        ["ubuntu22.04-arm64"] = "builds/firefox-beta/%s/firefox-beta-ubuntu-22.04-arm64.zip",
+        ["debian11-x64"] = "builds/firefox-beta/%s/firefox-beta-debian-11.zip",
+        ["debian11-arm64"] = "builds/firefox-beta/%s/firefox-beta-debian-11-arm64.zip",
+        ["debian12-x64"] = "builds/firefox-beta/%s/firefox-beta-debian-12.zip",
+        ["debian12-arm64"] = "builds/firefox-beta/%s/firefox-beta-debian-12-arm64.zip",
+        ["mac10.13"] = "builds/firefox-beta/%s/firefox-beta-mac-13.zip",
+        ["mac10.14"] = "builds/firefox-beta/%s/firefox-beta-mac-13.zip",
+        ["mac10.15"] = "builds/firefox-beta/%s/firefox-beta-mac-13.zip",
+        ["mac11"] = "builds/firefox-beta/%s/firefox-beta-mac-13.zip",
+        ["mac11-arm64"] = "builds/firefox-beta/%s/firefox-beta-mac-13-arm64.zip",
+        ["mac12"] = "builds/firefox-beta/%s/firefox-beta-mac-13.zip",
+        ["mac12-arm64"] = "builds/firefox-beta/%s/firefox-beta-mac-13-arm64.zip",
+        ["mac13"] = "builds/firefox-beta/%s/firefox-beta-mac-13.zip",
+        ["mac13-arm64"] = "builds/firefox-beta/%s/firefox-beta-mac-13-arm64.zip",
+        ["mac14"] = "builds/firefox-beta/%s/firefox-beta-mac-13.zip",
+        ["mac14-arm64"] = "builds/firefox-beta/%s/firefox-beta-mac-13-arm64.zip",
+        ["win64"] = "builds/firefox-beta/%s/firefox-beta-win64.zip",
+      }
+    }, {
+      "firefox-asan",
+      new Dictionary < string,
+      string > {
+        ["<unknown>"] = null,
+        ["ubuntu18.04-x64"] = null,
+        ["ubuntu20.04-x64"] = null,
+        ["ubuntu22.04-x64"] = "builds/firefox/%s/firefox-asan-ubuntu-22.04.zip",
+        ["ubuntu18.04-arm64"] = null,
+        ["ubuntu20.04-arm64"] = null,
+        ["ubuntu22.04-arm64"] = null,
+        ["debian11-x64"] = null,
+        ["debian11-arm64"] = null,
+        ["debian12-x64"] = null,
+        ["debian12-arm64"] = null,
+        ["mac10.13"] = "builds/firefox/%s/firefox-asan-mac-13.zip",
+        ["mac10.14"] = "builds/firefox/%s/firefox-asan-mac-13.zip",
+        ["mac10.15"] = "builds/firefox/%s/firefox-asan-mac-13.zip",
+        ["mac11"] = "builds/firefox/%s/firefox-asan-mac-13.zip",
+        ["mac11-arm64"] = null,
+        ["mac12"] = "builds/firefox/%s/firefox-asan-mac-13.zip",
+        ["mac12-arm64"] = null,
+        ["mac13"] = "builds/firefox/%s/firefox-asan-mac-13.zip",
+        ["mac13-arm64"] = null,
+        ["mac14"] = "builds/firefox/%s/firefox-asan-mac-13.zip",
+        ["mac14-arm64"] = null,
+        ["win64"] = null,
       }
     }, {
       "webkit",
       new Dictionary < string,
       string > {
-        {
-          "<unknown>",
-          null
-        },
-        {
-          "generic-linux",
-          "builds/webkit/{0}/webkit-ubuntu-20.04.zip"
-        },
-        {
-          "generic-linux-arm64",
-          "builds/webkit/{0}/webkit-ubuntu-20.04-arm64.zip"
-        },
-        {
-          "ubuntu18.04",
-          "builds/webkit/{0}/webkit-ubuntu-18.04.zip"
-        },
-        {
-          "ubuntu20.04",
-          "builds/webkit/{0}/webkit-ubuntu-20.04.zip"
-        },
-        {
-          "ubuntu22.04",
-          "builds/webkit/{0}/webkit-ubuntu-22.04.zip"
-        },
-        {
-          "ubuntu18.04-arm64",
-          null
-        },
-        {
-          "ubuntu20.04-arm64",
-          "builds/webkit/{0}/webkit-ubuntu-20.04-arm64.zip"
-        },
-        {
-          "ubuntu22.04-arm64",
-          "builds/webkit/{0}/webkit-ubuntu-22.04-arm64.zip"
-        },
-        {
-          "debian11",
-          "builds/webkit/{0}/webkit-debian-11.zip"
-        },
-        {
-          "debian11-arm64",
-          "builds/webkit/{0}/webkit-debian-11-arm64.zip"
-        },
-        {
-          "mac10.13",
-          null
-        },
-        {
-          "mac10.14",
-          "builds/deprecated-webkit-mac-10.14/{0}/deprecated-webkit-mac-10.14.zip"
-        },
-        {
-          "mac10.15",
-          "builds/deprecated-webkit-mac-10.15/{0}/deprecated-webkit-mac-10.15.zip"
-        },
-        {
-          "mac11",
-          "builds/webkit/{0}/webkit-mac-11.zip"
-        },
-        {
-          "mac11-arm64",
-          "builds/webkit/{0}/webkit-mac-11-arm64.zip"
-        },
-        {
-          "mac12",
-          "builds/webkit/{0}/webkit-mac-12.zip"
-        },
-        {
-          "mac12-arm64",
-          "builds/webkit/{0}/webkit-mac-12-arm64.zip"
-        },
-        {
-          "win64",
-          "builds/webkit/{0}/webkit-win64.zip"
-        }
+        ["<unknown>"] = null,
+        ["ubuntu18.04-x64"] = null,
+        ["ubuntu20.04-x64"] = "builds/webkit/%s/webkit-ubuntu-20.04.zip",
+        ["ubuntu22.04-x64"] = "builds/webkit/%s/webkit-ubuntu-22.04.zip",
+        ["ubuntu18.04-arm64"] = null,
+        ["ubuntu20.04-arm64"] = "builds/webkit/%s/webkit-ubuntu-20.04-arm64.zip",
+        ["ubuntu22.04-arm64"] = "builds/webkit/%s/webkit-ubuntu-22.04-arm64.zip",
+        ["debian11-x64"] = "builds/webkit/%s/webkit-debian-11.zip",
+        ["debian11-arm64"] = "builds/webkit/%s/webkit-debian-11-arm64.zip",
+        ["debian12-x64"] = "builds/webkit/%s/webkit-debian-12.zip",
+        ["debian12-arm64"] = "builds/webkit/%s/webkit-debian-12-arm64.zip",
+        ["mac10.13"] = null,
+        ["mac10.14"] = "builds/deprecated-webkit-mac-10.14/%s/deprecated-webkit-mac-10.14.zip",
+        ["mac10.15"] = "builds/deprecated-webkit-mac-10.15/%s/deprecated-webkit-mac-10.15.zip",
+        ["mac11"] = "builds/webkit/%s/webkit-mac-11.zip",
+        ["mac11-arm64"] = "builds/webkit/%s/webkit-mac-11-arm64.zip",
+        ["mac12"] = "builds/webkit/%s/webkit-mac-12.zip",
+        ["mac12-arm64"] = "builds/webkit/%s/webkit-mac-12-arm64.zip",
+        ["mac13"] = "builds/webkit/%s/webkit-mac-13.zip",
+        ["mac13-arm64"] = "builds/webkit/%s/webkit-mac-13-arm64.zip",
+        ["mac14"] = "builds/webkit/%s/webkit-mac-14.zip",
+        ["mac14-arm64"] = "builds/webkit/%s/webkit-mac-14-arm64.zip",
+        ["win64"] = "builds/webkit/%s/webkit-win64.zip",
       }
     }, {
       "ffmpeg",
       new Dictionary < string,
       string > {
-        {
-          "<unknown>",
-          null
-        },
-        {
-          "generic-linux",
-          "builds/ffmpeg/{0}/ffmpeg-linux.zip"
-        },
-        {
-          "generic-linux-arm64",
-          "builds/ffmpeg/{0}/ffmpeg-linux-arm64.zip"
-        },
-        {
-          "ubuntu18.04",
-          "builds/ffmpeg/{0}/ffmpeg-linux.zip"
-        },
-        {
-          "ubuntu20.04",
-          "builds/ffmpeg/{0}/ffmpeg-linux.zip"
-        },
-        {
-          "ubuntu22.04",
-          "builds/ffmpeg/{0}/ffmpeg-linux.zip"
-        },
-        {
-          "ubuntu18.04-arm64",
-          "builds/ffmpeg/{0}/ffmpeg-linux-arm64.zip"
-        },
-        {
-          "ubuntu20.04-arm64",
-          "builds/ffmpeg/{0}/ffmpeg-linux-arm64.zip"
-        },
-        {
-          "ubuntu22.04-arm64",
-          "builds/ffmpeg/{0}/ffmpeg-linux-arm64.zip"
-        },
-        {
-          "debian11",
-          "builds/ffmpeg/{0}/ffmpeg-linux.zip"
-        },
-        {
-          "debian11-arm64",
-          "builds/ffmpeg/{0}/ffmpeg-linux-arm64.zip"
-        },
-        {
-          "mac10.13",
-          "builds/ffmpeg/{0}/ffmpeg-mac.zip"
-        },
-        {
-          "mac10.14",
-          "builds/ffmpeg/{0}/ffmpeg-mac.zip"
-        },
-        {
-          "mac10.15",
-          "builds/ffmpeg/{0}/ffmpeg-mac.zip"
-        },
-        {
-          "mac11",
-          "builds/ffmpeg/{0}/ffmpeg-mac.zip"
-        },
-        {
-          "mac11-arm64",
-          "builds/ffmpeg/{0}/ffmpeg-mac-arm64.zip"
-        },
-        {
-          "mac12",
-          "builds/ffmpeg/{0}/ffmpeg-mac.zip"
-        },
-        {
-          "mac12-arm64",
-          "builds/ffmpeg/{0}/ffmpeg-mac-arm64.zip"
-        },
-        {
-          "win64",
-          "builds/ffmpeg/{0}/ffmpeg-win64.zip"
-        }
+        ["<unknown>"] = null,
+        ["ubuntu18.04-x64"] = null,
+        ["ubuntu20.04-x64"] = "builds/ffmpeg/%s/ffmpeg-linux.zip",
+        ["ubuntu22.04-x64"] = "builds/ffmpeg/%s/ffmpeg-linux.zip",
+        ["ubuntu18.04-arm64"] = null,
+        ["ubuntu20.04-arm64"] = "builds/ffmpeg/%s/ffmpeg-linux-arm64.zip",
+        ["ubuntu22.04-arm64"] = "builds/ffmpeg/%s/ffmpeg-linux-arm64.zip",
+        ["debian11-x64"] = "builds/ffmpeg/%s/ffmpeg-linux.zip",
+        ["debian11-arm64"] = "builds/ffmpeg/%s/ffmpeg-linux-arm64.zip",
+        ["debian12-x64"] = "builds/ffmpeg/%s/ffmpeg-linux.zip",
+        ["debian12-arm64"] = "builds/ffmpeg/%s/ffmpeg-linux-arm64.zip",
+        ["mac10.13"] = "builds/ffmpeg/%s/ffmpeg-mac.zip",
+        ["mac10.14"] = "builds/ffmpeg/%s/ffmpeg-mac.zip",
+        ["mac10.15"] = "builds/ffmpeg/%s/ffmpeg-mac.zip",
+        ["mac11"] = "builds/ffmpeg/%s/ffmpeg-mac.zip",
+        ["mac11-arm64"] = "builds/ffmpeg/%s/ffmpeg-mac-arm64.zip",
+        ["mac12"] = "builds/ffmpeg/%s/ffmpeg-mac.zip",
+        ["mac12-arm64"] = "builds/ffmpeg/%s/ffmpeg-mac-arm64.zip",
+        ["mac13"] = "builds/ffmpeg/%s/ffmpeg-mac.zip",
+        ["mac13-arm64"] = "builds/ffmpeg/%s/ffmpeg-mac-arm64.zip",
+        ["mac14"] = "builds/ffmpeg/%s/ffmpeg-mac.zip",
+        ["mac14-arm64"] = "builds/ffmpeg/%s/ffmpeg-mac-arm64.zip",
+        ["win64"] = "builds/ffmpeg/%s/ffmpeg-win64.zip",
       }
     }, {
       "android",
       new Dictionary < string,
       string > {
-        {
-          "<unknown>",
-          "builds/android/{0}/android.zip"
-        },
+        ["<unknown>"] = "builds/android/%s/android.zip",
+        ["ubuntu18.04-x64"] = null,
+        ["ubuntu20.04-x64"] = "builds/android/%s/android.zip",
+        ["ubuntu22.04-x64"] = "builds/android/%s/android.zip",
+        ["ubuntu18.04-arm64"] = null,
+        ["ubuntu20.04-arm64"] = "builds/android/%s/android.zip",
+        ["ubuntu22.04-arm64"] = "builds/android/%s/android.zip",
+        ["debian11-x64"] = "builds/android/%s/android.zip",
+        ["debian11-arm64"] = "builds/android/%s/android.zip",
+        ["debian12-x64"] = "builds/android/%s/android.zip",
+        ["debian12-arm64"] = "builds/android/%s/android.zip",
+        ["mac10.13"] = "builds/android/%s/android.zip",
+        ["mac10.14"] = "builds/android/%s/android.zip",
+        ["mac10.15"] = "builds/android/%s/android.zip",
+        ["mac11"] = "builds/android/%s/android.zip",
+        ["mac11-arm64"] = "builds/android/%s/android.zip",
+        ["mac12"] = "builds/android/%s/android.zip",
+        ["mac12-arm64"] = "builds/android/%s/android.zip",
+        ["mac13"] = "builds/android/%s/android.zip",
+        ["mac13-arm64"] = "builds/android/%s/android.zip",
+        ["mac14"] = "builds/android/%s/android.zip",
+        ["mac14-arm64"] = "builds/android/%s/android.zip",
+        ["win64"] = "builds/android/%s/android.zip",
       }
     }
   };
