@@ -27,32 +27,56 @@ public class BrowserDownloader
         };
     }
 
-    public async Task DownloadBrowserAsync(IProgress<double> progressCallback, string browser, string platform, string browsersFile = null, string version = null, string downloadPath = null)
+    public string GetRequiredVersion(string browser, string executablePath)
+    {
+        if(executablePath.Contains($"{browser}-"))
+        {
+            string[] segments = executablePath.Split(System.IO.Path.DirectorySeparatorChar);
+            var browserAndVersion = segments.FirstOrDefault(segment => segment.Contains($"{browser}-"));
+            var version = browserAndVersion.Split('-')[1];
+            return version;
+        }
+        return string.Empty;
+    }
+
+    public async Task DownloadBrowserAsync(
+        string browser, 
+        string platform, 
+        string? version = null, 
+        string? executablePath = null, 
+        string? browsersFile = null, 
+        string? downloadPath = null, 
+        IProgress<double>? progressCallback = null)
     {
         try
         {
-            if(string.IsNullOrEmpty(version))
+            if (!string.IsNullOrEmpty(executablePath) && string.IsNullOrEmpty(version))
             {
-                version = GetVersion(browser, browsersFile);
-                if(string.IsNullOrEmpty(version))
+                version = GetRequiredVersion(browser, executablePath);
+            }
+            if (string.IsNullOrEmpty(version))
+            {
+                version = await GetVersion(browser, browsersFile);
+                if (string.IsNullOrEmpty(version))
                 {
                     throw new Exception("Version not found");
                 }
             }
-            if(string.IsNullOrEmpty(downloadPath))
+
+            if (string.IsNullOrEmpty(downloadPath))
             {
                 //check if current OS is windows
-                if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     downloadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ms-playwright", $"{browser}-{version}");
 
                 }
-                else if(RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
                     downloadPath = $"~/.cache/ms-playwright/{browser}-{version}";
 
                 }
-                else if(RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                 {
                     downloadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.InternetCache), "ms-playwright", $"{browser}-{version}");
                 }
@@ -61,14 +85,25 @@ public class BrowserDownloader
                     throw new PlatformNotSupportedException("Platform not supported");
                 }
             }
+            else if(!downloadPath.Contains($"{browser}-{version}"))
+            {
+                downloadPath = Path.Combine(downloadPath, $"{browser}-{version}");
+            }
             var fileUrl = GetDownloadPath(browser, version, platform);
-            if(string.IsNullOrEmpty(fileUrl))
+            if (string.IsNullOrEmpty(fileUrl))
             {
                 throw new Exception("Download path not found");
             }
 
+            if(Directory.Exists(Path.Combine(downloadPath)) && File.Exists(Path.Combine(downloadPath, "INSTALLATION_COMPLETE")))
+            {
+                Trace.WriteLine("Browser already installed");
+                progressCallback?.Report(100);
+                return;
+            }
+
             var tempDir = downloadPath.Substring(0, downloadPath.LastIndexOf(Path.DirectorySeparatorChar));
-            if(!Directory.Exists(tempDir))
+            if (!Directory.Exists(tempDir))
             {
                 Directory.CreateDirectory(tempDir);
             }
@@ -95,9 +130,9 @@ public class BrowserDownloader
                             if (totalBytes.HasValue)
                             {
                                 double progressPercentage = (double)(downloadedBytes * 100) / totalBytes.Value;
-                                if(progressPercentage != 100)
+                                if (progressPercentage != 100)
                                 {
-                                    progressCallback.Report(progressPercentage);
+                                    progressCallback?.Report(progressPercentage);
                                 }
                             }
                         }
@@ -122,28 +157,39 @@ public class BrowserDownloader
                     }
                     else
                     {
-                    ZipFile.ExtractToDirectory(tempPath, downloadPath);
+                        if(Directory.Exists(downloadPath))
+                        {
+                            Directory.Delete(downloadPath, true);
+                        }
+                        ZipFile.ExtractToDirectory(tempPath, downloadPath);
                     }
                     File.Delete(tempPath);
                     File.Create(Path.Combine(downloadPath, "INSTALLATION_COMPLETE"));
-                    progressCallback.Report(100);
+                    progressCallback?.Report(100);
                 }
             }
-
             Trace.WriteLine("Download completed successfully!");
         }
         catch (Exception ex)
         {
             Trace.WriteLine($"Error: {ex.Message}");
+            progressCallback?.Report(-1);
             throw;
         }
     }
 
-    string GetVersion(string browserName, string browsersFile = null)
+    async Task<string> GetVersion(string browserName, string? browsersFile = null)
     {
-        if(string.IsNullOrEmpty(browsersFile))
+        if (string.IsNullOrEmpty(browsersFile))
         {
-            browsersFile = "browsers.json";
+            browsersFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "browsers.json");
+        }
+        if(!File.Exists(browsersFile))
+        {
+            browsersFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "browsers.json");
+            Trace.WriteLine("Downloading browsers.json from repository");
+            var content = await _httpClient.GetStringAsync(Constants.HostedBrowsersJson);
+            File.WriteAllText(browsersFile, content);
         }
 
         var json = File.ReadAllText(browsersFile);
@@ -151,12 +197,12 @@ public class BrowserDownloader
 
         JsonElement browsersArray = document.RootElement.GetProperty("browsers");
 
-        JsonElement browser = browsersArray.EnumerateArray()
+        JsonElement? browser = browsersArray.EnumerateArray()
             .FirstOrDefault(browser => browser.GetProperty("name").GetString() == browserName);
 
-        if (browser.ValueKind != JsonValueKind.Undefined)
+        if (browser?.ValueKind != JsonValueKind.Undefined)
         {
-            string revision = browser.GetProperty("revision").GetString();
+            string? revision = browser?.GetProperty("revision").GetString() ?? string.Empty;
             return revision;
         }
         else
@@ -169,8 +215,10 @@ public class BrowserDownloader
     {
         if (Constants.Paths.ContainsKey(browser) && Constants.Paths[browser].ContainsKey(platform))
         {
+            var constant = Constants.Paths[browser][platform];
+            var result = _cdns[0] + string.Format(constant, version);
             return _cdns[0] + string.Format(Constants.Paths[browser][platform], version);
         }
-        return null;
+        return string.Empty;
     }
 }

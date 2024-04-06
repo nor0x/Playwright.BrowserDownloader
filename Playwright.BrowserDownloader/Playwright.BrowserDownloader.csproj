@@ -9,9 +9,9 @@
   <!-- NuGet -->
   <PropertyGroup>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyVersion>0.1.1</AssemblyVersion>
-    <AssemblyFileVersion>0.1.1</AssemblyFileVersion>
-    <Version>0.1.1</Version>
+    <AssemblyVersion>0.1.2</AssemblyVersion>
+    <AssemblyFileVersion>0.1.2</AssemblyFileVersion>
+    <Version>0.1.2</Version>
     <Title>nor0x.Playwright.BrowserDownloader</Title>
     <PackageId>nor0x.Playwright.BrowserDownloader</PackageId>
     <PackageReleaseNotes>https://github.com/nor0x/Playwright.BrowserDownloader/releases</PackageReleaseNotes>
@@ -30,6 +30,11 @@
     <PackageReadmeFile>Readme.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="browsers.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="..\Art\packageicon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -40,14 +45,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="System.Text.Json"
-                      Version="7.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="browsers.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <PackageReference Include="System.Text.Json" Version="8.0.3" />
   </ItemGroup>
 
 </Project>

@@ -12,17 +12,27 @@ a small and simple helper library to manually download browsers for playwright u
 
 
 # Usage
-BrowserDownloader allows to manually download browsers for Playwright usage, in a managed way from .NET. It allows injection of a custom `HttpClient` and reports download progress via `IProgress`. It ships with the `browsers.json` file from [Playwright](https://github.com/microsoft/playwright/blob/main/packages/playwright-core/browsers.json) but can also handle a custom version file.
+nor0x.Playwright.BrowserDownloader allows to manually download browsers for Playwright usage, in a managed way from .NET. It allows injection of a custom `HttpClient` and reports download progress via `IProgress`. It ships with the `browsers.json` file from [Playwright](https://github.com/microsoft/playwright/blob/main/packages/playwright-core/browsers.json) but can also handle a custom version file.
 
 ```csharp
 var downloader = new BrowserDownloader(new MyCustomHttpClient());
-await downloader.DownloadBrowserAsync(new Progress<double>(progressCallback), "chromium", "mac12");
+await downloader.DownloadBrowserAsync("chromium", "mac12", new Progress<double>(progressCallback));
 
 void progressCallback(double p)
 {
     Console.WriteLine("download progress: " + p);
 }
 ```
+
+## specific version
+specific versions can be set by passing the version string to the `DownloadBrowserAsync` method. If there is already an `IPlaywright` object available, the executable path for a browser engine can be set directly.
+
+```csharp
+using var playwright = await Playwright.CreateAsync();
+var downloader = new BrowserDownloader();
+await downloader.DownloadBrowserAsync("firefox", "win64", downloadPath: browserPath, executablePath: playwright.Firefox.ExecutablePath);
+```
+
 
 # more info
 https://johnnys.news/2023/07/nor0x-Playwright-BrowserDownloader
