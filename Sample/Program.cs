@@ -2,7 +2,7 @@
 
 Console.WriteLine("Hello World!");
 var downloader = new BrowserDownloader();
-await downloader.DownloadBrowserAsync(new Progress<double>(progressCallback), "chromium", "mac12");
+await downloader.DownloadBrowserAsync("chromium", "mac12", progressCallback:new Progress<double>(progressCallback));
 
 void progressCallback(double obj)
 {
