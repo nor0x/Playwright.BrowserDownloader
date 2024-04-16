@@ -9,6 +9,8 @@ a small and simple helper library to manually download browsers for playwright u
 [![](https://img.shields.io/nuget/dt/nor0x.Playwright.BrowserDownloader)](https://www.nuget.org/packages/nor0x.Playwright.BrowserDownloader)
 
 
+this library is under development - the API is subject to change.
+
 
 
 # Usage
