@@ -15,6 +15,7 @@ public class BrowserDownloader
 {
     HttpClient _httpClient;
     List<string> _cdns;
+    
 
     public BrowserDownloader(HttpClient httpClient = null)
     {
@@ -27,6 +28,12 @@ public class BrowserDownloader
         };
     }
 
+    /// <summary>
+    /// gets a required version from the executable path from a playwright object
+    /// </summary>
+    /// <param name="browser">see nor0x.Playwright.BrowserDownloader.BrowserInfo</param>
+    /// <param name="executablePath">executable path from playwright object</param>
+    /// <returns>version string for the specified browser</returns>
     public string GetRequiredVersion(string browser, string executablePath)
     {
         if(executablePath.Contains($"{browser}-"))
@@ -38,10 +45,21 @@ public class BrowserDownloader
         }
         return string.Empty;
     }
-
-    public async Task DownloadBrowserAsync(
-        string browser, 
-        string platform, 
+    
+    /// <summary>
+    /// downloads the specified browser with a specific version for the specified platform
+    /// </summary>
+    /// <param name="browserType">see nor0x.Playwright.BrowserDownloader.BrowserInfo</param>
+    /// <param name="targetPlatform">see nor0x.Playwright.BrowserDownloader.TargetPlatform</param>
+    /// <param name="version">version string see browsers.json for examples</param>
+    /// <param name="executablePath">optional executable path from a playwright object</param>
+    /// <param name="browsersFile">optional custom browser definition file</param>
+    /// <param name="downloadPath">optional download path where the browser will be downloaded</param>
+    /// <param name="progressCallback">optional progress callback</param>
+    /// <returns>executable path of the downloaded browser</returns>
+    public async Task<string> DownloadBrowserAsync(
+        BrowserInfo browserType, 
+        TargetPlatform targetPlatform, 
         string? version = null, 
         string? executablePath = null, 
         string? browsersFile = null, 
@@ -50,6 +68,8 @@ public class BrowserDownloader
     {
         try
         {
+            var browser = browserType.ToReadableString();
+            var platform = targetPlatform.ToReadableString();
             if (!string.IsNullOrEmpty(executablePath) && string.IsNullOrEmpty(version))
             {
                 version = GetRequiredVersion(browser, executablePath);
@@ -65,7 +85,6 @@ public class BrowserDownloader
 
             if (string.IsNullOrEmpty(downloadPath))
             {
-                //check if current OS is windows
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     downloadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ms-playwright", $"{browser}-{version}");
@@ -73,8 +92,7 @@ public class BrowserDownloader
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
-                    downloadPath = $"~/.cache/ms-playwright/{browser}-{version}";
-
+                    downloadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".cache", "ms-playwright", $"{browser}-{version}");
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                 {
@@ -89,17 +107,26 @@ public class BrowserDownloader
             {
                 downloadPath = Path.Combine(downloadPath, $"{browser}-{version}");
             }
-            var fileUrl = GetDownloadPath(browser, version, platform);
-            if (string.IsNullOrEmpty(fileUrl))
+            var downloadLink = GetDownloadLink(browser, version, platform);
+            if (string.IsNullOrEmpty(downloadLink))
             {
                 throw new Exception("Download path not found");
             }
 
-            if(Directory.Exists(Path.Combine(downloadPath)) && File.Exists(Path.Combine(downloadPath, "INSTALLATION_COMPLETE")))
+            var execPath = GetExecutablePath(browser, platform);
+            var fullExecutablePath = Path.Combine(downloadPath, execPath);
+            bool platformExists = false;
+            if(File.Exists(Path.Combine(downloadPath, "INSTALLATION_COMPLETE")))
+            {
+                var content = File.ReadAllText(Path.Combine(downloadPath, "INSTALLATION_COMPLETE"));
+                platformExists = content.Contains(platform);
+            }
+
+            if (Directory.Exists(Path.Combine(downloadPath)) && platformExists && File.Exists(fullExecutablePath))
             {
                 Trace.WriteLine("Browser already installed");
                 progressCallback?.Report(100);
-                return;
+                return fullExecutablePath;
             }
 
             var tempDir = downloadPath.Substring(0, downloadPath.LastIndexOf(Path.DirectorySeparatorChar));
@@ -107,9 +134,9 @@ public class BrowserDownloader
             {
                 Directory.CreateDirectory(tempDir);
             }
-            var fileName = fileUrl.Substring(fileUrl.LastIndexOf('/') + 1);
+            var fileName = downloadLink.Substring(downloadLink.LastIndexOf('/') + 1);
             var tempPath = Path.Combine(tempDir, fileName);
-            using (HttpResponseMessage response = await _httpClient.GetAsync(fileUrl, HttpCompletionOption.ResponseHeadersRead))
+            using (HttpResponseMessage response = await _httpClient.GetAsync(downloadLink, HttpCompletionOption.ResponseHeadersRead))
             {
                 response.EnsureSuccessStatusCode();
 
@@ -164,11 +191,12 @@ public class BrowserDownloader
                         ZipFile.ExtractToDirectory(tempPath, downloadPath);
                     }
                     File.Delete(tempPath);
-                    File.Create(Path.Combine(downloadPath, "INSTALLATION_COMPLETE"));
+                    File.WriteAllText(Path.Combine(downloadPath, "INSTALLATION_COMPLETE"), platform);
                     progressCallback?.Report(100);
+                    Trace.WriteLine("Download completed successfully!");
+                    return fullExecutablePath;
                 }
             }
-            Trace.WriteLine("Download completed successfully!");
         }
         catch (Exception ex)
         {
@@ -178,7 +206,15 @@ public class BrowserDownloader
         }
     }
 
-    async Task<string> GetVersion(string browserName, string? browsersFile = null)
+
+    /// <summary>
+    ///  gets the version of the specified browser from browsers.json or specified browsers file
+    /// </summary>
+    /// <param name="browser">see nor0x.Playwright.BrowserDownloader.BrowserInfo</param>
+    /// <param name="browsersFile">optional custom browser definition file</param>
+    /// <returns>version string</returns>
+    /// <exception cref="FileNotFoundException"></exception>
+    async Task<string> GetVersion(string browser, string? browsersFile = null)
     {
         if (string.IsNullOrEmpty(browsersFile))
         {
@@ -197,27 +233,76 @@ public class BrowserDownloader
 
         JsonElement browsersArray = document.RootElement.GetProperty("browsers");
 
-        JsonElement? browser = browsersArray.EnumerateArray()
-            .FirstOrDefault(browser => browser.GetProperty("name").GetString() == browserName);
+        JsonElement? browserElement = browsersArray.EnumerateArray()
+            .FirstOrDefault(b => b.GetProperty("name").GetString() == browser);
 
-        if (browser?.ValueKind != JsonValueKind.Undefined)
+        if (browserElement?.ValueKind != JsonValueKind.Undefined)
         {
-            string? revision = browser?.GetProperty("revision").GetString() ?? string.Empty;
+            string? revision = browserElement?.GetProperty("revision").GetString() ?? string.Empty;
             return revision;
         }
         else
         {
-            throw new FileNotFoundException($"Browser {browserName} not found in browsers.json");
+            throw new FileNotFoundException($"Browser {browser} not found in browsers.json");
         }
     }
 
-    string GetDownloadPath(string browser, string version, string platform)
+    /// <summary>
+    /// returns a download link for the specified browser, version and platform
+    /// </summary>
+    /// <param name="browser">see nor0x.Playwright.BrowserDownloader.BrowserInfo</param>
+    /// <param name="version">browser version</param>
+    /// <param name="platform">see nor0x.Playwright.BrowserDownloader.TargetPlatform</param>
+    /// <returns>download link for the specified browser, version and platform</returns>
+    string GetDownloadLink(string browser, string version, string platform)
     {
         if (Constants.Paths.ContainsKey(browser) && Constants.Paths[browser].ContainsKey(platform))
         {
             var constant = Constants.Paths[browser][platform];
             var result = _cdns[0] + string.Format(constant, version);
             return _cdns[0] + string.Format(Constants.Paths[browser][platform], version);
+        }
+        return string.Empty;
+    }
+
+    /// <summary>
+    /// returns the relative path to the browser executable in the download folder
+    /// </summary>
+    /// <param name="browser">chrome, firefox, webkit</param>
+    /// <param name="version">see browsers.json</param>
+    /// <param name="platform"></param>
+    /// <returns></returns>
+    /// <exception cref="PlatformNotSupportedException"></exception>
+    string GetExecutablePath(string browser, string platform)
+    {
+        if(platform.Contains("ubuntu") || platform.Contains("debian"))
+        {
+            platform = "linux";
+        }
+        else if(platform.Contains("mac"))
+        {
+            platform = "mac";
+        }
+        else if(platform.Contains("win"))
+        {
+            platform = "win";
+        }
+        else
+        {
+            throw new PlatformNotSupportedException("Platform not supported");
+        }
+
+        if(browser.Contains("-"))
+        {
+            browser = browser.Split('-')[0];
+        }
+
+        if (Constants.ExecutablePaths.TryGetValue(browser, out Dictionary<string, string> outPaths))
+        {
+            if (outPaths.TryGetValue(platform, out string execPath))
+            {
+                return execPath.Replace(", ", Path.DirectorySeparatorChar.ToString());
+            }
         }
         return string.Empty;
     }
