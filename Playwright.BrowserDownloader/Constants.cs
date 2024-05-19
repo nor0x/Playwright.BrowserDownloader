@@ -157,34 +157,6 @@ public static class Constants
 		["win64"] = "builds/firefox-beta/{0}/firefox-beta-win64.zip",
 	  }
 	}, {
-	  "firefox-asan",
-	  new Dictionary < string,
-	  string > {
-		["<unknown>"] = null,
-		["ubuntu18.04-x64"] = null,
-		["ubuntu20.04-x64"] = null,
-		["ubuntu22.04-x64"] = "builds/firefox/{0}/firefox-asan-ubuntu-22.04.zip",
-		["ubuntu18.04-arm64"] = null,
-		["ubuntu20.04-arm64"] = null,
-		["ubuntu22.04-arm64"] = null,
-		["debian11-x64"] = null,
-		["debian11-arm64"] = null,
-		["debian12-x64"] = null,
-		["debian12-arm64"] = null,
-		["mac10.13"] = "builds/firefox/{0}/firefox-asan-mac-13.zip",
-		["mac10.14"] = "builds/firefox/{0}/firefox-asan-mac-13.zip",
-		["mac10.15"] = "builds/firefox/{0}/firefox-asan-mac-13.zip",
-		["mac11"] = "builds/firefox/{0}/firefox-asan-mac-13.zip",
-		["mac11-arm64"] = null,
-		["mac12"] = "builds/firefox/{0}/firefox-asan-mac-13.zip",
-		["mac12-arm64"] = null,
-		["mac13"] = "builds/firefox/{0}/firefox-asan-mac-13.zip",
-		["mac13-arm64"] = null,
-		["mac14"] = "builds/firefox/{0}/firefox-asan-mac-13.zip",
-		["mac14-arm64"] = null,
-		["win64"] = null,
-	  }
-	}, {
 	  "webkit",
 	  new Dictionary < string,
 	  string > {
@@ -305,7 +277,6 @@ public enum BrowserInfo
 	ChromiumTipOfTree,
 	Firefox,
 	FirefoxBeta,
-	FirefoxAsan,
 	Webkit,
 	Ffmpeg,
 	Android
@@ -366,7 +337,7 @@ public static class Extensions
 			default:
 				throw new ArgumentOutOfRangeException(nameof(platform), platform, null);
 		}
-		
+
 	}
 
 	public static string ToReadableString(this BrowserInfo browserType)
@@ -381,8 +352,6 @@ public static class Extensions
 				return "firefox";
 			case BrowserInfo.FirefoxBeta:
 				return "firefox-beta";
-			case BrowserInfo.FirefoxAsan:
-				return "firefox-asan";
 			case BrowserInfo.Webkit:
 				return "webkit";
 			case BrowserInfo.Ffmpeg:
