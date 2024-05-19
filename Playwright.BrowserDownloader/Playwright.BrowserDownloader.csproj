@@ -9,9 +9,9 @@
   <!-- NuGet -->
   <PropertyGroup>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyVersion>0.2.0</AssemblyVersion>
-    <AssemblyFileVersion>0.2.0</AssemblyFileVersion>
-    <Version>0.2.0</Version>
+    <AssemblyVersion>0.2.1</AssemblyVersion>
+    <AssemblyFileVersion>0.2.1</AssemblyFileVersion>
+    <Version>0.2.1</Version>
     <Title>nor0x.Playwright.BrowserDownloader</Title>
     <PackageId>nor0x.Playwright.BrowserDownloader</PackageId>
     <PackageReleaseNotes>https://github.com/nor0x/Playwright.BrowserDownloader/releases</PackageReleaseNotes>
