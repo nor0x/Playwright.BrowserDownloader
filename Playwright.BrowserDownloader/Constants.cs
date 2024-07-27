@@ -4,7 +4,8 @@ using System.Collections.Generic;
 namespace nor0x.Playwright.BrowserDownloader;
 public static class Constants
 {
-	public static string HostedBrowsersJson = "https://raw.githubusercontent.com/nor0x/Playwright.BrowserDownloader/main/Playwright.BrowserDownloader/browsers.json";
+    //based on https://github.com/microsoft/playwright/blob/main/packages/playwright-core/browsers.json
+    public static string HostedBrowsersJson = "https://raw.githubusercontent.com/nor0x/Playwright.BrowserDownloader/main/Playwright.BrowserDownloader/browsers.json";
 
 	public static Dictionary<string, Dictionary<string, string>> ExecutablePaths = new Dictionary<string, Dictionary<string, string>>
 		{
