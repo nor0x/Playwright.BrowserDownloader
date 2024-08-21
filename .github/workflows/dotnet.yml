@@ -47,9 +47,9 @@ jobs:
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
+          commit: 'main'
           tag: ${{ steps.get_version.outputs.CURRENT_VERSION }}
-          commit: ${{ github.sha }}
           name: Release ${{ steps.get_version.outputs.CURRENT_VERSION }}
           body: |
             # Release ${{ steps.get_version.outputs.CURRENT_VERSION }}
-            This release is based on the commit: ${{ github.event.repository.full_name }}@${{github.sha}}.
+            This release is based on the commit: ${{ github.event.repository.full_name }}@${{ github.sha }}.
