@@ -55,7 +55,6 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
-          commit: 'main'
           name: Release ${{ steps.get_version.outputs.CURRENT_VERSION }}
           body: |
             # Release ${{ steps.get_version.outputs.CURRENT_VERSION }}
