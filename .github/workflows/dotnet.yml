@@ -48,5 +48,8 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.get_version.outputs.CURRENT_VERSION }}
+          commit: ${{ github.sha }}
           name: Release ${{ steps.get_version.outputs.CURRENT_VERSION }}
-          body: ${{ steps.tag_version.outputs.changelog }}
+          body: |
+            # Release ${{ steps.get_version.outputs.CURRENT_VERSION }}
+            This release is based on the commit: ${{ github.event.repository.full_name }}@${{github.sha}}.
