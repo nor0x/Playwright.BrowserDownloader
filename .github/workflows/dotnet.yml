@@ -13,6 +13,8 @@ jobs:
         run: |
           $version = [System.Version]::Parse((Get-Content Playwright.BrowserDownloader/Playwright.BrowserDownloader.csproj | Select-String -Pattern "<Version>(.*)</Version>").Matches.Groups[1].Value)
           $env:CURRENT_VERSION = $version.ToString()
+          # set output
+          echo "::set-output name=CURRENT_VERSION::$env:CURRENT_VERSION"
       - name: Log Current Version
         run: |
           echo "Current Version: ${{ env.CURRENT_VERSION }}"
