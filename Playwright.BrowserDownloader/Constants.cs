@@ -4,8 +4,8 @@ using System.Collections.Generic;
 namespace nor0x.Playwright.BrowserDownloader;
 public static class Constants
 {
-    //based on https://github.com/microsoft/playwright/blob/main/packages/playwright-core/browsers.json
-    public static string HostedBrowsersJson = "https://raw.githubusercontent.com/nor0x/Playwright.BrowserDownloader/main/Playwright.BrowserDownloader/browsers.json";
+	//based on https://github.com/microsoft/playwright/blob/main/packages/playwright-core/browsers.json
+	public static string HostedBrowsersJson = "https://raw.githubusercontent.com/nor0x/Playwright.BrowserDownloader/main/Playwright.BrowserDownloader/browsers.json";
 
 	public static Dictionary<string, Dictionary<string, string>> ExecutablePaths = new Dictionary<string, Dictionary<string, string>>
 		{
@@ -17,6 +17,14 @@ public static class Constants
 					{ "win", "chrome-win, chrome.exe" }
 				}
 			},
+		{
+			"chromium-headless-shell", new Dictionary<string, string>
+			{
+				{ "linux", "chrome-linux, headless_shell" },
+				{ "mac", "chrome-mac, headless_shell" },
+				{ "win", "chrome-win, headless_shell.exe" }
+			}
+		},
 			{
 				"firefox", new Dictionary<string, string>
 				{
@@ -75,7 +83,41 @@ public static class Constants
 		["mac14-arm64"] = "builds/chromium/{0}/chromium-mac-arm64.zip",
 		["win64"] = "builds/chromium/{0}/chromium-win64.zip",
 	  }
-	}, {
+	},
+		{
+			"chromium-headless-shell",
+			new Dictionary<string, string>
+			{
+				["<unknown>"] = null,
+				["ubuntu18.04-x64"] = null,
+				["ubuntu20.04-x64"] = "builds/chromium/{0}/chromium-headless-shell-linux.zip",
+				["ubuntu22.04-x64"] = "builds/chromium/{0}/chromium-headless-shell-linux.zip",
+				["ubuntu24.04-x64"] = "builds/chromium/{0}/chromium-headless-shell-linux.zip",
+				["ubuntu18.04-arm64"] = null,
+				["ubuntu20.04-arm64"] = "builds/chromium/{0}/chromium-headless-shell-linux-arm64.zip",
+				["ubuntu22.04-arm64"] = "builds/chromium/{0}/chromium-headless-shell-linux-arm64.zip",
+				["ubuntu24.04-arm64"] = "builds/chromium/{0}/chromium-headless-shell-linux-arm64.zip",
+				["debian11-x64"] = "builds/chromium/{0}/chromium-headless-shell-linux.zip",
+				["debian11-arm64"] = "builds/chromium/{0}/chromium-headless-shell-linux-arm64.zip",
+				["debian12-x64"] = "builds/chromium/{0}/chromium-headless-shell-linux.zip",
+				["debian12-arm64"] = "builds/chromium/{0}/chromium-headless-shell-linux-arm64.zip",
+				["mac10.13"] = null,
+				["mac10.14"] = null,
+				["mac10.15"] = null,
+				["mac11"] = "builds/chromium/{0}/chromium-headless-shell-mac.zip",
+				["mac11-arm64"] = "builds/chromium/{0}/chromium-headless-shell-mac-arm64.zip",
+				["mac12"] = "builds/chromium/{0}/chromium-headless-shell-mac.zip",
+				["mac12-arm64"] = "builds/chromium/{0}/chromium-headless-shell-mac-arm64.zip",
+				["mac13"] = "builds/chromium/{0}/chromium-headless-shell-mac.zip",
+				["mac13-arm64"] = "builds/chromium/{0}/chromium-headless-shell-mac-arm64.zip",
+				["mac14"] = "builds/chromium/{0}/chromium-headless-shell-mac.zip",
+				["mac14-arm64"] = "builds/chromium/{0}/chromium-headless-shell-mac-arm64.zip",
+				["mac15"] = "builds/chromium/{0}/chromium-headless-shell-mac.zip",
+				["mac15-arm64"] = "builds/chromium/{0}/chromium-headless-shell-mac-arm64.zip",
+				["win64"] = "builds/chromium/{0}/chromium-headless-shell-win64.zip",
+			}
+		},
+		{
 	  "chromium-tip-of-tree",
 	  new Dictionary < string,
 	  string > {
@@ -358,7 +400,6 @@ public static class Extensions
 			default:
 				throw new ArgumentOutOfRangeException(nameof(platform), platform, null);
 		}
-
 	}
 
 	public static string ToReadableString(this BrowserInfo browserType)
