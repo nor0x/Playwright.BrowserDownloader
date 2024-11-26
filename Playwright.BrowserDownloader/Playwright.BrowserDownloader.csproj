@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
+		<TargetFramework>netstandard2.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<LangVersion>preview</LangVersion>
 	</PropertyGroup>
@@ -9,9 +9,9 @@
 	<!-- NuGet -->
 	<PropertyGroup>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<AssemblyVersion>0.2.5</AssemblyVersion>
-		<AssemblyFileVersion>0.2.5</AssemblyFileVersion>
-		<Version>0.2.5</Version>
+		<AssemblyVersion>0.2.6</AssemblyVersion>
+		<AssemblyFileVersion>0.2.6</AssemblyFileVersion>
+		<Version>0.2.6</Version>
 		<Title>nor0x.Playwright.BrowserDownloader</Title>
 		<PackageId>nor0x.Playwright.BrowserDownloader</PackageId>
 		<PackageReleaseNotes>https://github.com/nor0x/Playwright.BrowserDownloader/releases</PackageReleaseNotes>
@@ -44,7 +44,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="System.Text.Json" Version="9.0.0-rc.1.24431.7" />
+		<PackageReference Include="System.Text.Json" Version="6.0.0" />
 	</ItemGroup>
 
 </Project>
