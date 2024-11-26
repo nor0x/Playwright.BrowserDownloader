@@ -1,51 +1,50 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Nullable>enable</Nullable>
-    <LangVersion>preview</LangVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
+	</PropertyGroup>
 
-  <!-- NuGet -->
-  <PropertyGroup>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyVersion>0.2.4</AssemblyVersion>
-    <AssemblyFileVersion>0.2.4</AssemblyFileVersion>
-    <Version>0.2.4</Version>
-    <Title>nor0x.Playwright.BrowserDownloader</Title>
-    <PackageId>nor0x.Playwright.BrowserDownloader</PackageId>
-    <PackageReleaseNotes>https://github.com/nor0x/Playwright.BrowserDownloader/releases</PackageReleaseNotes>
-    <PackageProjectUrl>https://github.com/nor0x/Playwright.BrowserDownloader</PackageProjectUrl>
-    <PackageIconUrl>
-      https://raw.githubusercontent.com/nor0x/Playwright.BrowserDownloader/main/art/packageicon.png</PackageIconUrl>
-    <PackageIcon>packageicon.png</PackageIcon>
-    <RepositoryUrl>https://github.com/nor0x/Playwright.BrowserDownloader</RepositoryUrl>
-    <PackageTags>playwright, chrome, firefox, webkit, headless</PackageTags>
-    <Summary>a helper library to manually download browsers for playwright usage</Summary>
-    <Description>a helper library to manually download browsers for playwright usage</Description>
-    <Owners>Joachim Leonfellner</Owners>
-    <Authors>Joachim Leonfellner</Authors>
-    <Copyright>Copyright 2023 nor0x</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReadmeFile>Readme.md</PackageReadmeFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <Content Include="browsers.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Art\packageicon.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\Readme.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="9.0.0-rc.1.24431.7" />
-  </ItemGroup>
+	<!-- NuGet -->
+	<PropertyGroup>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<AssemblyVersion>0.2.5</AssemblyVersion>
+		<AssemblyFileVersion>0.2.5</AssemblyFileVersion>
+		<Version>0.2.5</Version>
+		<Title>nor0x.Playwright.BrowserDownloader</Title>
+		<PackageId>nor0x.Playwright.BrowserDownloader</PackageId>
+		<PackageReleaseNotes>https://github.com/nor0x/Playwright.BrowserDownloader/releases</PackageReleaseNotes>
+		<PackageProjectUrl>https://github.com/nor0x/Playwright.BrowserDownloader</PackageProjectUrl>
+		<PackageIconUrl>https://raw.githubusercontent.com/nor0x/Playwright.BrowserDownloader/main/art/packageicon.png</PackageIconUrl>
+		<PackageIcon>packageicon.png</PackageIcon>
+		<RepositoryUrl>https://github.com/nor0x/Playwright.BrowserDownloader</RepositoryUrl>
+		<PackageTags>playwright, chrome, firefox, webkit, headless</PackageTags>
+		<Summary>a helper library to manually download browsers for playwright usage</Summary>
+		<Description>a helper library to manually download browsers for playwright usage</Description>
+		<Owners>Joachim Leonfellner</Owners>
+		<Authors>Joachim Leonfellner</Authors>
+		<Copyright>Copyright 2023 nor0x</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>Readme.md</PackageReadmeFile>
+	</PropertyGroup>
+	<ItemGroup>
+		<Content Include="browsers.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\Art\packageicon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\Readme.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Text.Json" Version="9.0.0-rc.1.24431.7" />
+	</ItemGroup>
 
 </Project>
