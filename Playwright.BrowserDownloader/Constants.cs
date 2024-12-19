@@ -17,14 +17,6 @@ public static class Constants
 					{ "win", "chrome-win, chrome.exe" }
 				}
 			},
-		{
-			"chromium-headless-shell", new Dictionary<string, string>
-			{
-				{ "linux", "chrome-linux, headless_shell" },
-				{ "mac", "chrome-mac, headless_shell" },
-				{ "win", "chrome-win, headless_shell.exe" }
-			}
-		},
 			{
 				"firefox", new Dictionary<string, string>
 				{
@@ -81,43 +73,11 @@ public static class Constants
 		["mac13-arm64"] = "builds/chromium/{0}/chromium-mac-arm64.zip",
 		["mac14"] = "builds/chromium/{0}/chromium-mac.zip",
 		["mac14-arm64"] = "builds/chromium/{0}/chromium-mac-arm64.zip",
+		["mac15"] = "builds/chromium/{0}/chromium-mac.zip",
+		["mac15-arm64"] = "builds/chromium/{0}/chromium-mac-arm64.zip",
 		["win64"] = "builds/chromium/{0}/chromium-win64.zip",
 	  }
-	},
-		{
-			"chromium-headless-shell",
-			new Dictionary<string, string>
-			{
-				["<unknown>"] = null,
-				["ubuntu18.04-x64"] = null,
-				["ubuntu20.04-x64"] = "builds/chromium/{0}/chromium-headless-shell-linux.zip",
-				["ubuntu22.04-x64"] = "builds/chromium/{0}/chromium-headless-shell-linux.zip",
-				["ubuntu24.04-x64"] = "builds/chromium/{0}/chromium-headless-shell-linux.zip",
-				["ubuntu18.04-arm64"] = null,
-				["ubuntu20.04-arm64"] = "builds/chromium/{0}/chromium-headless-shell-linux-arm64.zip",
-				["ubuntu22.04-arm64"] = "builds/chromium/{0}/chromium-headless-shell-linux-arm64.zip",
-				["ubuntu24.04-arm64"] = "builds/chromium/{0}/chromium-headless-shell-linux-arm64.zip",
-				["debian11-x64"] = "builds/chromium/{0}/chromium-headless-shell-linux.zip",
-				["debian11-arm64"] = "builds/chromium/{0}/chromium-headless-shell-linux-arm64.zip",
-				["debian12-x64"] = "builds/chromium/{0}/chromium-headless-shell-linux.zip",
-				["debian12-arm64"] = "builds/chromium/{0}/chromium-headless-shell-linux-arm64.zip",
-				["mac10.13"] = null,
-				["mac10.14"] = null,
-				["mac10.15"] = null,
-				["mac11"] = "builds/chromium/{0}/chromium-headless-shell-mac.zip",
-				["mac11-arm64"] = "builds/chromium/{0}/chromium-headless-shell-mac-arm64.zip",
-				["mac12"] = "builds/chromium/{0}/chromium-headless-shell-mac.zip",
-				["mac12-arm64"] = "builds/chromium/{0}/chromium-headless-shell-mac-arm64.zip",
-				["mac13"] = "builds/chromium/{0}/chromium-headless-shell-mac.zip",
-				["mac13-arm64"] = "builds/chromium/{0}/chromium-headless-shell-mac-arm64.zip",
-				["mac14"] = "builds/chromium/{0}/chromium-headless-shell-mac.zip",
-				["mac14-arm64"] = "builds/chromium/{0}/chromium-headless-shell-mac-arm64.zip",
-				["mac15"] = "builds/chromium/{0}/chromium-headless-shell-mac.zip",
-				["mac15-arm64"] = "builds/chromium/{0}/chromium-headless-shell-mac-arm64.zip",
-				["win64"] = "builds/chromium/{0}/chromium-headless-shell-win64.zip",
-			}
-		},
-		{
+	}, {
 	  "chromium-tip-of-tree",
 	  new Dictionary < string,
 	  string > {
@@ -145,6 +105,8 @@ public static class Constants
 		["mac13-arm64"] = "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac-arm64.zip",
 		["mac14"] = "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac.zip",
 		["mac14-arm64"] = "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac-arm64.zip",
+		["mac15"] = "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac.zip",
+		["mac15-arm64"] = "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-mac-arm64.zip",
 		["win64"] = "builds/chromium-tip-of-tree/{0}/chromium-tip-of-tree-win64.zip",
 	  }
 	}, {
@@ -164,17 +126,19 @@ public static class Constants
 		["debian11-arm64"] = "builds/firefox/{0}/firefox-debian-11-arm64.zip",
 		["debian12-x64"] = "builds/firefox/{0}/firefox-debian-12.zip",
 		["debian12-arm64"] = "builds/firefox/{0}/firefox-debian-12-arm64.zip",
-		["mac10.13"] = "builds/firefox/{0}/firefox-mac-13.zip",
-		["mac10.14"] = "builds/firefox/{0}/firefox-mac-13.zip",
-		["mac10.15"] = "builds/firefox/{0}/firefox-mac-13.zip",
-		["mac11"] = "builds/firefox/{0}/firefox-mac-13.zip",
-		["mac11-arm64"] = "builds/firefox/{0}/firefox-mac-13-arm64.zip",
-		["mac12"] = "builds/firefox/{0}/firefox-mac-13.zip",
-		["mac12-arm64"] = "builds/firefox/{0}/firefox-mac-13-arm64.zip",
-		["mac13"] = "builds/firefox/{0}/firefox-mac-13.zip",
-		["mac13-arm64"] = "builds/firefox/{0}/firefox-mac-13-arm64.zip",
-		["mac14"] = "builds/firefox/{0}/firefox-mac-13.zip",
-		["mac14-arm64"] = "builds/firefox/{0}/firefox-mac-13-arm64.zip",
+		["mac10.13"] = "builds/firefox/{0}/firefox-mac.zip",
+		["mac10.14"] = "builds/firefox/{0}/firefox-mac.zip",
+		["mac10.15"] = "builds/firefox/{0}/firefox-mac.zip",
+		["mac11"] = "builds/firefox/{0}/firefox-mac.zip",
+		["mac11-arm64"] = "builds/firefox/{0}/firefox-mac-arm64.zip",
+		["mac12"] = "builds/firefox/{0}/firefox-mac.zip",
+		["mac12-arm64"] = "builds/firefox/{0}/firefox-mac-arm64.zip",
+		["mac13"] = "builds/firefox/{0}/firefox-mac.zip",
+		["mac13-arm64"] = "builds/firefox/{0}/firefox-mac-arm64.zip",
+		["mac14"] = "builds/firefox/{0}/firefox-mac.zip",
+		["mac14-arm64"] = "builds/firefox/{0}/firefox-mac-arm64.zip",
+		["mac15"] = "builds/firefox/{0}/firefox-mac.zip",
+		["mac15-arm64"] = "builds/firefox/{0}/firefox-mac-arm64.zip",
 		["win64"] = "builds/firefox/{0}/firefox-win64.zip",
 	  }
 	}, {
@@ -194,17 +158,17 @@ public static class Constants
 		["debian11-arm64"] = "builds/firefox-beta/{0}/firefox-beta-debian-11-arm64.zip",
 		["debian12-x64"] = "builds/firefox-beta/{0}/firefox-beta-debian-12.zip",
 		["debian12-arm64"] = "builds/firefox-beta/{0}/firefox-beta-debian-12-arm64.zip",
-		["mac10.13"] = "builds/firefox-beta/{0}/firefox-beta-mac-13.zip",
-		["mac10.14"] = "builds/firefox-beta/{0}/firefox-beta-mac-13.zip",
-		["mac10.15"] = "builds/firefox-beta/{0}/firefox-beta-mac-13.zip",
-		["mac11"] = "builds/firefox-beta/{0}/firefox-beta-mac-13.zip",
-		["mac11-arm64"] = "builds/firefox-beta/{0}/firefox-beta-mac-13-arm64.zip",
-		["mac12"] = "builds/firefox-beta/{0}/firefox-beta-mac-13.zip",
-		["mac12-arm64"] = "builds/firefox-beta/{0}/firefox-beta-mac-13-arm64.zip",
-		["mac13"] = "builds/firefox-beta/{0}/firefox-beta-mac-13.zip",
-		["mac13-arm64"] = "builds/firefox-beta/{0}/firefox-beta-mac-13-arm64.zip",
-		["mac14"] = "builds/firefox-beta/{0}/firefox-beta-mac-13.zip",
-		["mac14-arm64"] = "builds/firefox-beta/{0}/firefox-beta-mac-13-arm64.zip",
+		["mac10.13"] = "builds/firefox-beta/{0}/firefox-beta-mac.zip",
+		["mac10.14"] = "builds/firefox-beta/{0}/firefox-beta-mac.zip",
+		["mac10.15"] = "builds/firefox-beta/{0}/firefox-beta-mac.zip",
+		["mac11"] = "builds/firefox-beta/{0}/firefox-beta-mac.zip",
+		["mac11-arm64"] = "builds/firefox-beta/{0}/firefox-beta-mac-arm64.zip",
+		["mac12"] = "builds/firefox-beta/{0}/firefox-beta-mac.zip",
+		["mac12-arm64"] = "builds/firefox-beta/{0}/firefox-beta-mac-arm64.zip",
+		["mac13"] = "builds/firefox-beta/{0}/firefox-beta-mac.zip",
+		["mac13-arm64"] = "builds/firefox-beta/{0}/firefox-beta-mac-arm64.zip",
+		["mac14"] = "builds/firefox-beta/{0}/firefox-beta-mac.zip",
+		["mac14-arm64"] = "builds/firefox-beta/{0}/firefox-beta-mac-arm64.zip",
 		["win64"] = "builds/firefox-beta/{0}/firefox-beta-win64.zip",
 	  }
 	}, {
@@ -235,6 +199,8 @@ public static class Constants
 		["mac13-arm64"] = "builds/webkit/{0}/webkit-mac-13-arm64.zip",
 		["mac14"] = "builds/webkit/{0}/webkit-mac-14.zip",
 		["mac14-arm64"] = "builds/webkit/{0}/webkit-mac-14-arm64.zip",
+		["mac15"] = "builds/webkit/{0}/webkit-mac-15.zip",
+		["mac15-arm64"] = "builds/webkit/{0}/webkit-mac-15-arm64.zip",
 		["win64"] = "builds/webkit/{0}/webkit-win64.zip",
 	  }
 	}, {
@@ -265,6 +231,8 @@ public static class Constants
 		["mac13-arm64"] = "builds/ffmpeg/{0}/ffmpeg-mac-arm64.zip",
 		["mac14"] = "builds/ffmpeg/{0}/ffmpeg-mac.zip",
 		["mac14-arm64"] = "builds/ffmpeg/{0}/ffmpeg-mac-arm64.zip",
+		["mac15"] = "builds/ffmpeg/{0}/ffmpeg-mac.zip",
+		["mac15-arm64"] = "builds/ffmpeg/{0}/ffmpeg-mac-arm64.zip",
 		["win64"] = "builds/ffmpeg/{0}/ffmpeg-win64.zip",
 	  }
 	}, {
@@ -295,6 +263,8 @@ public static class Constants
 		["mac13-arm64"] = "builds/android/{0}/android.zip",
 		["mac14"] = "builds/android/{0}/android.zip",
 		["mac14-arm64"] = "builds/android/{0}/android.zip",
+		["mac15"] = "builds/android/{0}/android.zip",
+		["mac15-arm64"] = "builds/android/{0}/android.zip",
 		["win64"] = "builds/android/{0}/android.zip",
 	  }
 	}
